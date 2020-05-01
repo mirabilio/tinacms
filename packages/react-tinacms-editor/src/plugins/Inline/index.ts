@@ -16,13 +16,6 @@ limitations under the License.
 
 */
 
-import { MarkdownTranslator, Format, DOMTranslator } from '../../translator'
-import { Schema } from 'prosemirror-model'
+import { ToolbarComponent } from './ToolbarComponent'
 
-export const buildTranslator = (
-  schema: Schema,
-  format: Format = 'markdown'
-) => {
-  if (format === 'html') return DOMTranslator.fromSchema(schema)
-  return MarkdownTranslator.fromSchema(schema)
-}
+export { ToolbarComponent }

@@ -21,16 +21,14 @@ import { useState, useRef, useEffect, useLayoutEffect } from 'react'
 
 // todo: all these inports should come for different plugins eventually
 // And thus can be replaced by just a loop on plugin collection
-import { BlockControl } from '../../plugins/Menu/blockControl'
 import { FloatingTableMenu } from '../../plugins/Menu/FloatingTableMenu'
 import { HistoryControl } from '../../plugins/Menu/historyControl'
-import {
-  InlineControl,
-  TableControl,
-  CodeControl,
-  ListControl,
-} from '../../plugins/Menu'
+import { TableControl } from '../../plugins/Menu'
+import { ToolbarComponent as ToolbarComponentBlock } from '../../plugins/Block'
+import { ToolbarComponent as ToolbarComponentInline } from '../../plugins/Inline'
 import { ToolbarComponent as ToolbarComponentQuote } from '../../plugins/Blockquote'
+import { ToolbarComponent as ToolbarComponentList } from '../../plugins/List'
+import { ToolbarComponent as ToolbarComponentCodeBlock } from '../../plugins/CodeBlock'
 import {
   FloatingMenu as FloatingMenuImage,
   Loaders as LoadersImage,
@@ -125,14 +123,14 @@ export const Menu = ({
       >
         <MenuPortalProvider>
           <MenuContainer onMouseDown={preventProsemirrorFocusLoss}>
-            <BlockControl />
-            <InlineControl />
+            <ToolbarComponentBlock />
+            <ToolbarComponentInline />
             <ToolbarComponentLink />
             <ToolbarComponentImage uploadImages={uploadImages} />
             <TableControl bottom={bottom} />
             <ToolbarComponentQuote bottom={bottom} />
-            <CodeControl bottom={bottom} />
-            <ListControl bottom={bottom} />
+            <ToolbarComponentCodeBlock bottom={bottom} />
+            <ToolbarComponentList bottom={bottom} />
             <HistoryControl />
           </MenuContainer>
         </MenuPortalProvider>

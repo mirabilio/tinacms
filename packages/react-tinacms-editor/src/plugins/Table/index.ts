@@ -16,70 +16,28 @@ limitations under the License.
 
 */
 
-import { Plugin, PluginKey } from 'prosemirror-state'
-import { DecorationSet, EditorView } from 'prosemirror-view'
-import { findParentNodeOfType } from 'prosemirror-utils'
-import { TableMap } from 'prosemirror-tables'
+import { ToolbarComponent } from './ToolbarComponent'
 
-import { buildCellSelection, buildExtendedHeaders } from './utils'
+export { ToolbarComponent }
+/**
 
-export const tablePluginKey = new PluginKey('table')
+Copyright 2019 Forestry.io Inc
 
-export const tablePlugin = new Plugin({
-  key: tablePluginKey,
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-  state: {
-    init: () => {
-      return { deco: DecorationSet.empty }
-    },
-    apply(tr, prev, _3, newState) {
-      if (tr.getMeta('image_clicked') === false) return prev
-      const { selection } = newState
-      if (selection) {
-        const { table } = newState.schema.nodes
-        const tableNode = findParentNodeOfType(table)(selection)
-        if (tableNode) {
-          const decorations = buildExtendedHeaders(tableNode, selection)
-          if (decorations.length)
-            return {
-              deco: DecorationSet.create(newState.doc, decorations),
-              tableMap: TableMap.get(tableNode.node),
-              selectedTable: tableNode,
-            }
-        }
-      }
-      return { deco: DecorationSet.empty }
-    },
-  },
-  props: {
-    decorations(state) {
-      return (this as any).getState(state).deco
-    },
-    /**
-     * When extended table header is clicked, corresponding column or row should be selected.
-     */
-    handleClickOn(
-      view: EditorView,
-      _1: any,
-      _2: any,
-      nodePos: number,
-      event: any,
-      direct: boolean
-    ) {
-      if (!direct) return false
-      const targetClasses = event.target.classList
-      const { state, dispatch } = view
-      const tablePluginState = tablePluginKey.getState(state)
-      const { tableMap: tableMap, selectedTable } = tablePluginState
-      const cellSelection = buildCellSelection(
-        nodePos,
-        targetClasses.value,
-        tableMap,
-        selectedTable,
-        state
-      )
-      if (cellSelection) dispatch(state.tr.setSelection(cellSelection as any))
-      return false
-    },
-  },
-})
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+*/
+
+import { tablePluginKey, tablePlugin } from './plugin'
+import { ToolbarComponent } from './ToolbarComponent'
+
+export { tablePluginKey, tablePlugin, ToolbarComponent, FloatingMenu, Loaders }

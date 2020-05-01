@@ -16,13 +16,21 @@ limitations under the License.
 
 */
 
-import { MarkdownTranslator, Format, DOMTranslator } from '../../translator'
-import { Schema } from 'prosemirror-model'
+import { setBlockType } from 'prosemirror-commands'
+import { EditorState } from 'prosemirror-state'
 
-export const buildTranslator = (
-  schema: Schema,
-  format: Format = 'markdown'
-) => {
-  if (format === 'html') return DOMTranslator.fromSchema(schema)
-  return MarkdownTranslator.fromSchema(schema)
+import { CodeIcon } from '@tinacms/icons'
+
+import { commandContrl } from '../../Menu'
+
+function makeCodeBlock(state: EditorState, dispatch: any) {
+  return setBlockType(state.schema.nodes.code_block)(state, dispatch)
 }
+
+export const ToolbarComponent = commandContrl(
+  makeCodeBlock,
+  CodeIcon,
+  'Codeblock',
+  'Codeblock',
+  false
+) //codeblock focusing messes with scroll

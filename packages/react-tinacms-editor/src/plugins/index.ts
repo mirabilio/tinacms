@@ -26,10 +26,10 @@ import { keymap } from 'prosemirror-keymap'
 import { tableEditing } from 'prosemirror-tables'
 
 import { inputRules } from './input-rules'
-import { Translator } from '../Translator'
+import { Translator } from '../translator'
 import { buildKeymap } from './buildKeymap'
 import { linkPlugin } from './Link'
-import { tablePlugin } from './Table'
+import { tablePlugin } from './Table/plugin'
 import { imagePlugin } from './Image'
 import { commonPlugin } from './Common'
 

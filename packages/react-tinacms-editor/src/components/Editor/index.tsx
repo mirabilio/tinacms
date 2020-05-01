@@ -22,7 +22,7 @@ import styled from 'styled-components'
 import { Plugin } from '@tinacms/core'
 
 import { Menu } from '../Menu'
-import { Format } from '../../Translator'
+import { Format } from '../../translator'
 import { ImageProps } from '../../types'
 
 import { CodeMirrorCss } from './styles/CodeMirror'

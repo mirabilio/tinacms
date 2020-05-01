@@ -40,7 +40,7 @@ import ordered_list from '../schema/nodes/list-ordered'
 import paragraph from '../schema/nodes/paragraph'
 import text from '../schema/nodes/text'
 import tables from '../schema/nodes/tables'
-import { KEYMAP_PLUGINS } from './keymap'
+import { KEYMAP_PLUGINS } from './Common/keymap'
 
 export const MARK_PLUGINS: SchemaMarkPlugin[] = [code, em, link, strong]
 

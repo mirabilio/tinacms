@@ -24,14 +24,14 @@ import { blockTool } from './blockTool'
 import { Dismissible } from 'react-dismissible'
 
 // TODO: Move this into this module?
-import { toggleHeader as th } from '../Block/commands'
-import { useEditorStateContext } from '../../context/editorState'
-import { MenuButton, MenuButtonDropdown } from './MenuComponents'
+import { toggleHeader as th } from '../commands'
+import { useEditorStateContext } from '../../../context/editorState'
+import { MenuButton, MenuButtonDropdown } from '../../Menu/MenuComponents'
 import styled, { css } from 'styled-components'
 import { HeadingIcon } from '@tinacms/icons'
 import { EditorView } from 'prosemirror-view'
 
-export const BlockControl: FunctionComponent = () => {
+export const ToolbarComponent: FunctionComponent = () => {
   const [active, setActive] = useState(false)
   const menuButtonRef = useRef()
   const { editorView } = useEditorStateContext()

@@ -16,13 +16,29 @@ limitations under the License.
 
 */
 
-import { MarkdownTranslator, Format, DOMTranslator } from '../../translator'
-import { Schema } from 'prosemirror-model'
+import * as React from 'react'
+import { UnorderedListIcon, OrderedListIcon } from '@tinacms/icons'
 
-export const buildTranslator = (
-  schema: Schema,
-  format: Format = 'markdown'
-) => {
-  if (format === 'html') return DOMTranslator.fromSchema(schema)
-  return MarkdownTranslator.fromSchema(schema)
-}
+import { toggleBulletList, toggleOrderedList } from '../commands'
+import { commandContrl } from '../../Menu'
+
+export const ToolbarComponent = (props: any) => (
+  <>
+    <BulletList {...props} />
+    <OrderedList {...props} />
+  </>
+)
+
+const BulletList = commandContrl(
+  toggleBulletList,
+  UnorderedListIcon,
+  'Unordered List',
+  'Unordered List'
+)
+
+const OrderedList = commandContrl(
+  toggleOrderedList,
+  OrderedListIcon,
+  'Ordered List',
+  'Ordered List'
+)

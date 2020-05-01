@@ -25,7 +25,7 @@ import {
   chainCommands,
   exitCode,
 } from 'prosemirror-commands'
-import { insertHr } from '../commands'
+import { insertHr } from './commands'
 import {
   splitListItem,
   sinkListItem,
@@ -34,12 +34,12 @@ import {
 import { EditorView } from 'prosemirror-view'
 import { findParentNodeOfType } from 'prosemirror-utils'
 import * as TableCommands from 'prosemirror-tables'
-import { liftBlockquote } from './Blockquote/commands'
-import { toggleBulletList, toggleOrderedList } from '../commands/list-commands'
-import { deleteEmptyHeading, toggleHeader } from './Block/commands'
+import { liftBlockquote } from '../Blockquote/commands'
+import { toggleBulletList, toggleOrderedList } from '../List/commands'
+import { deleteEmptyHeading, toggleHeader } from '../Block/commands'
 import { undo, redo } from 'prosemirror-history'
 import { undoInputRule } from 'prosemirror-inputrules'
-import { KeymapPlugin } from '../types'
+import { KeymapPlugin } from '../../types'
 
 const hardBreakCmd = (schema: Schema) => {
   const br = schema.nodes.hard_break

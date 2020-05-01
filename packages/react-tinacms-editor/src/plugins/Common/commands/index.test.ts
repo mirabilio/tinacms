@@ -16,9 +16,9 @@ limitations under the License.
 
 */
 
-import { PMTestHarness } from '../prosemirror-test-utils'
-import { insertHr } from './horizontal-rule-commands'
-import { defaultSchema } from '../schema/default-schema'
+import { PMTestHarness } from '../../../prosemirror-test-utils'
+import { insertHr } from '.'
+import { defaultSchema } from '../../../schema/default-schema'
 
 const { forDoc, doc, p, text, hr } = new PMTestHarness(defaultSchema)
 
